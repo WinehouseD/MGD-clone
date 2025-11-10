@@ -28,22 +28,28 @@ const translations = {
       "Our mission: protect, restore, and elevate Québec’s built heritage while guiding a new generation of owners through construction and major renovation projects.",
     "services.title": "Services",
     "services.intro":
-      "A complete suite of services to enhance your structures, from foundation to finish. Every project is guided by our vision: build with precision and pride.",
-    "services.card1.title": "General Contracting",
+      "Comprehensive masonry solutions to reinforce, protect, and showcase your property. Every intervention is executed with precision, durability, and respect for heritage.",
+    "services.card1.title": "Brick & Stone Installation",
     "services.card1.desc":
-      "End-to-end management of your masonry projects, coordinating crews and timelines for uncompromised execution.",
-    "services.card2.title": "Specialized Masonry",
+      "Precision laying of brick, block, and natural stone for new builds, additions, and façade upgrades.",
+    "services.card2.title": "Tuckpointing & Repointing",
     "services.card2.desc":
-      "Expert assembly for brick, block, and natural stone with finishes worthy of landmark architecture.",
-    "services.card3.title": "Structural Repairs",
+      "Renew mortar joints to seal out moisture, correct deterioration, and restore the character of your masonry.",
+    "services.card3.title": "Sill & Lintel Replacement",
     "services.card3.desc":
-      "Repointing, stabilization, and replacement of failing elements to restore the strength of walls and foundations.",
-    "services.card4.title": "Heritage Restoration",
+      "Remove and replace compromised window sills and structural lintels to safeguard openings and load paths.",
+    "services.card4.title": "Bulged Wall Repair",
     "services.card4.desc":
-      "Delicate interventions on historic buildings, respecting original materials and preservation standards.",
-    "services.card5.title": "Custom Stonework",
+      "Stabilize bowing or bulged masonry with structural reinforcement, selective rebuilding, and anchoring systems.",
+    "services.card5.title": "Expansion Joints",
     "services.card5.desc":
-      "Bespoke creations for cornices, lintels, feature walls, and signature architectural elements.",
+      "Install or refresh expansion joints to absorb movement, prevent cracking, and extend the life of exterior walls.",
+    "services.card6.title": "Selective Demolition",
+    "services.card6.desc":
+      "Careful dismantling of masonry elements to prepare for restoration, upgrades, or safe removal of damaged sections.",
+    "services.card7.title": "Professional Caulking",
+    "services.card7.desc":
+      "Durable, weather-tight caulking to prevent water infiltration, air leaks, and energy loss around critical junctions.",
     "assurance.title": "Credentials & Assurance",
     "assurance.licenses.title": "Licenses & Certifications",
     "assurance.licenses.label": "RBQ:",
@@ -98,21 +104,27 @@ const translations = {
     "services.title": "Services",
     "services.intro":
       "Une gamme complète de services pour rehausser vos structures, des fondations aux finitions. Chaque projet est guidé par notre vision : bâtir avec précision et fierté.",
-    "services.card1.title": "Entrepreneur général",
+    "services.card1.title": "Pose de brique et pierre",
     "services.card1.desc":
       "Gestion clé en main de vos projets de maçonnerie, coordination des équipes et des échéanciers pour une exécution sans compromis.",
-    "services.card2.title": "Maçonnerie spécialisée",
+    "services.card2.title": "Rejointoiement",
     "services.card2.desc":
       "Assemblage expert de briques, blocs et pierres naturelles avec des finitions dignes des bâtiments emblématiques.",
-    "services.card3.title": "Réparations structurales",
+    "services.card3.title": "Changement d'allège et linteau",
     "services.card3.desc":
       "Rejointoiement, stabilisation et remplacement des éléments défaillants afin de restaurer la solidité des murs et des fondations.",
-    "services.card4.title": "Restauration patrimoniale",
+    "services.card4.title": "Réparation de ventre de boeuf",
     "services.card4.desc":
       "Interventions délicates sur les bâtiments historiques, dans le respect des matériaux d'origine et des normes de conservation.",
-    "services.card5.title": "Ouvrages de pierre sur mesure",
+    "services.card5.title": "Joint d'expansion",
     "services.card5.desc":
       "Créations sur mesure pour corniches, linteaux, murs signature et éléments architecturaux distinctifs.",
+    "services.card6.title": "Démolition",
+    "services.card6.desc":
+      "Services de démolition sécuritaires et efficaces, préparant le terrain pour vos nouveaux projets de construction ou de rénovation.",
+    "services.card7.title": "Calfeutrage",
+    "services.card7.desc":
+      "Solutions de calfeutrage durables pour protéger vos structures contre les infiltrations d'eau et améliorer l'efficacité énergétique.",
     "assurance.title": "Certifications et garanties",
     "assurance.licenses.title": "Licences et certifications",
     "assurance.licenses.label": "RBQ :",
@@ -190,30 +202,36 @@ function App() {
         title: t("services.card1.title"),
         description: t("services.card1.desc"),
         icon: (
-          <svg className="service-icon" viewBox="0 0 64 64">
+          <svg className="service-icon" viewBox="0 0 64 64" aria-hidden="true">
             <rect
-              x="8"
-              y="20"
-              width="48"
-              height="32"
-              rx="6"
-              ry="6"
+              x="10"
+              y="22"
+              width="44"
+              height="26"
+              rx="4"
               fill="#16264b"
               opacity="0.12"
             />
             <path
-              d="M16 34h32M16 44h32"
+              d="M10 30h44M10 38h44"
               stroke="#16264b"
               strokeWidth="3"
               strokeLinecap="round"
             />
             <path
-              d="M24 12l8-4 8 4"
+              d="M22 22v12M34 22v12M46 22v12"
               stroke="#16264b"
               strokeWidth="3"
               strokeLinecap="round"
             />
-            <circle cx="32" cy="26" r="6" fill="#16264b" opacity="0.45" />
+            <path
+              d="M28 12l8 8"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <path d="M38 18l8 8-10 4-6-6z" fill="#16264b" opacity="0.6" />
+            <circle cx="28" cy="12" r="3" fill="#16264b" />
           </svg>
         ),
       },
@@ -222,36 +240,41 @@ function App() {
         title: t("services.card2.title"),
         description: t("services.card2.desc"),
         icon: (
-          <svg className="service-icon" viewBox="0 0 64 64">
+          <svg className="service-icon" viewBox="0 0 64 64" aria-hidden="true">
             <rect
-              x="10"
-              y="14"
-              width="44"
-              height="36"
+              x="12"
+              y="20"
+              width="40"
+              height="24"
               rx="4"
-              ry="4"
               fill="#16264b"
               opacity="0.12"
             />
             <path
-              d="M14 24h36M14 34h36M14 44h36"
+              d="M12 28h40M12 36h40"
               stroke="#16264b"
               strokeWidth="3"
               strokeLinecap="round"
             />
             <path
-              d="M20 24v20M32 24v20M44 24v20"
+              d="M22 20v24M34 20v24"
               stroke="#16264b"
               strokeWidth="3"
               strokeLinecap="round"
             />
-            <circle
-              cx="32"
-              cy="12"
-              r="5"
-              fill="#e5e8f0"
+            <path
+              d="M14 32h36"
               stroke="#16264b"
-              strokeWidth="2"
+              strokeWidth="5"
+              strokeLinecap="round"
+              opacity="0.35"
+            />
+            <path d="M20 44l8-8 6 6-8 8" fill="#16264b" opacity="0.65" />
+            <path
+              d="M28 36l10-10"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinecap="round"
             />
           </svg>
         ),
@@ -261,26 +284,55 @@ function App() {
         title: t("services.card3.title"),
         description: t("services.card3.desc"),
         icon: (
-          <svg className="service-icon" viewBox="0 0 64 64">
-            <path
-              d="M12 28l40-12-12 40-18 5 6-20-16-13z"
+          <svg className="service-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect
+              x="14"
+              y="16"
+              width="36"
+              height="32"
+              rx="4"
               fill="#16264b"
-              opacity="0.15"
+              opacity="0.12"
+            />
+            <rect
+              x="20"
+              y="22"
+              width="24"
+              height="20"
+              fill="none"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinejoin="round"
+            />
+            <rect
+              x="16"
+              y="18"
+              width="32"
+              height="6"
+              rx="2"
+              fill="#16264b"
+              opacity="0.6"
+            />
+            <rect
+              x="16"
+              y="40"
+              width="32"
+              height="6"
+              rx="2"
+              fill="#16264b"
+              opacity="0.6"
             />
             <path
-              d="M12 28l16 13-6 20m22-45l-6 20"
+              d="M32 12v8"
               stroke="#16264b"
               strokeWidth="3"
               strokeLinecap="round"
             />
-            <circle cx="24" cy="52" r="4" fill="#16264b" />
-            <circle
-              cx="38"
-              cy="18"
-              r="4"
-              fill="#e5e8f0"
+            <path
+              d="M24 48l-6 8M40 48l6 8"
               stroke="#16264b"
-              strokeWidth="2"
+              strokeWidth="3"
+              strokeLinecap="round"
             />
           </svg>
         ),
@@ -290,24 +342,31 @@ function App() {
         title: t("services.card4.title"),
         description: t("services.card4.desc"),
         icon: (
-          <svg className="service-icon" viewBox="0 0 64 64">
+          <svg className="service-icon" viewBox="0 0 64 64" aria-hidden="true">
             <path
-              d="M16 48h32l4-24-20-16-20 16z"
+              d="M18 16h20c8 0 14 6 14 16s-6 16-14 16H18z"
               fill="#16264b"
               opacity="0.12"
             />
             <path
-              d="M12 28h40M16 48l4-20 12-12 12 12 4 20"
+              d="M18 16h18c7 0 12 6 12 16s-5 16-12 16H18"
               stroke="#16264b"
               strokeWidth="3"
               strokeLinecap="round"
             />
             <path
-              d="M18 20l6-8M46 20l-6-8"
+              d="M14 20h6M14 28h10M14 36h12M14 44h10"
               stroke="#16264b"
               strokeWidth="3"
               strokeLinecap="round"
             />
+            <path
+              d="M50 20l-4 8 4 8"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <circle cx="54" cy="28" r="4" fill="#16264b" opacity="0.55" />
           </svg>
         ),
       },
@@ -316,22 +375,102 @@ function App() {
         title: t("services.card5.title"),
         description: t("services.card5.desc"),
         icon: (
-          <svg className="service-icon" viewBox="0 0 64 64">
-            <path
-              d="M18 48l-6-18 14-14 18 2 8 16-12 14z"
+          <svg className="service-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect
+              x="12"
+              y="16"
+              width="16"
+              height="32"
+              rx="3"
+              fill="#16264b"
+              opacity="0.12"
+            />
+            <rect
+              x="36"
+              y="16"
+              width="16"
+              height="32"
+              rx="3"
               fill="#16264b"
               opacity="0.12"
             />
             <path
-              d="M12 30l14-14 18 2 8 16-12 14-20-4z"
+              d="M28 18l8 8-8 8 8 8-8 8"
               stroke="#16264b"
               strokeWidth="3"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
             <path
-              d="M26 16l12 24"
-              stroke="#e5e8f0"
+              d="M20 24h-8M44 24h8M20 40h-8M44 40h8"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+          </svg>
+        ),
+      },
+      {
+        key: "card6",
+        title: t("services.card6.title"),
+        description: t("services.card6.desc"),
+        icon: (
+          <svg className="service-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect
+              x="12"
+              y="28"
+              width="40"
+              height="20"
+              rx="4"
+              fill="#16264b"
+              opacity="0.12"
+            />
+            <path
+              d="M12 36h40M20 28v20M32 28v20M44 28v20"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <path
+              d="M28 14l12 12"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <path d="M42 10l8 8-10 10-8-8z" fill="#16264b" opacity="0.55" />
+            <path
+              d="M44 12l6-6"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+          </svg>
+        ),
+      },
+      {
+        key: "card7",
+        title: t("services.card7.title"),
+        description: t("services.card7.desc"),
+        icon: (
+          <svg className="service-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M14 34h18l8 8H26z" fill="#16264b" opacity="0.12" />
+            <path
+              d="M12 28h16l14 14-6 6-14-14H12z"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M44 42l8-8"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <path d="M46 18l10 10-12 12-10-10z" fill="#16264b" opacity="0.6" />
+            <path
+              d="M48 16l6-6"
+              stroke="#16264b"
               strokeWidth="3"
               strokeLinecap="round"
             />
