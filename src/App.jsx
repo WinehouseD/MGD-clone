@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import "./App.css";
 import icon from "./assets/logo.svg";
 
@@ -75,6 +76,9 @@ const translations = {
     "form.placeholder.phone": "(xxx) xxx-xxxx",
     "form.placeholder.message": "Describe your masonry needs...",
     "form.submit": "Submit Request",
+    "form.sending": "Sending…",
+    "form.success": "Thanks! We’ll contact you shortly.",
+    "form.error": "Oops! Something went wrong. Please try again.",
     "footer.tagline": "Building with distinction, inspired by heritage.",
     "footer.rights": "All rights reserved.",
   },
@@ -150,6 +154,9 @@ const translations = {
     "form.placeholder.phone": "(xxx) xxx-xxxx",
     "form.placeholder.message": "Décrivez votre projet de maçonnerie...",
     "form.submit": "Soumettre la demande",
+    "form.sending": "Envoi en cours…",
+    "form.success": "Merci! Nous vous contacterons sous peu.",
+    "form.error": "Oups! Une erreur est survenue. Veuillez réessayer.",
     "footer.tagline": "Construire avec distinction, inspiré par le patrimoine.",
     "footer.rights": "Tous droits réservés.",
   },
@@ -183,6 +190,110 @@ function usePreferredLanguage(defaultLang = "fr") {
   }, [lang]);
 
   return [lang, setLang];
+}
+
+const FORMSPREE_FORM_ID = "xreegkob";
+const initialForm = {
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+};
+
+function ContactForm({ lang, t }) {
+  const [formValues, setFormValues] = useState(() => ({ ...initialForm }));
+  const [state, handleSubmit] = useForm(FORMSPREE_FORM_ID);
+  const hasErrors = Array.isArray(state.errors) && state.errors.length > 0;
+
+  useEffect(() => {
+    if (state.succeeded) {
+      setFormValues(() => ({ ...initialForm }));
+    }
+  }, [state.succeeded]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const onSubmit = (event) => {
+    handleSubmit(event);
+  };
+
+  return (
+    <form onSubmit={onSubmit} noValidate>
+      <label htmlFor="name">{t("form.label.name")}</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        placeholder={t("form.placeholder.name")}
+        value={formValues.name}
+        onChange={handleChange}
+        required
+      />
+
+      <label htmlFor="email">{t("form.label.email")}</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        placeholder={t("form.placeholder.email")}
+        value={formValues.email}
+        onChange={handleChange}
+        required
+      />
+      <ValidationError prefix="Email" field="email" errors={state.errors} />
+
+      <label htmlFor="phone">{t("form.label.phone")}</label>
+      <input
+        id="phone"
+        name="phone"
+        type="tel"
+        placeholder={t("form.placeholder.phone")}
+        value={formValues.phone}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="message">{t("form.label.message")}</label>
+      <textarea
+        id="message"
+        name="message"
+        placeholder={t("form.placeholder.message")}
+        value={formValues.message}
+        onChange={handleChange}
+        required
+      />
+      <ValidationError prefix="Message" field="message" errors={state.errors} />
+
+      <input type="hidden" name="_language" value={lang} />
+      <input type="hidden" name="_subject" value="New masonry inquiry" />
+
+      <input
+        type="text"
+        name="_gotcha"
+        style={{ display: "none" }}
+        tabIndex="-1"
+        autoComplete="off"
+      />
+
+      <button type="submit" className="btn-outline" disabled={state.submitting}>
+        {state.submitting ? t("form.sending") : t("form.submit")}
+      </button>
+
+      {state.succeeded && (
+        <p role="status" className="form-success">
+          {t("form.success")}
+        </p>
+      )}
+
+      {hasErrors && !state.submitting && !state.succeeded && (
+        <p role="status" className="form-error">
+          {t("form.error")}
+        </p>
+      )}
+    </form>
+  );
 }
 
 function App() {
@@ -629,50 +740,7 @@ function App() {
                 </div>
               </div>
 
-              <form
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  // Hook up to your form handler or service here
-                }}
-              >
-                <label htmlFor="name">{t("form.label.name")}</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder={t("form.placeholder.name")}
-                  required
-                />
-
-                <label htmlFor="email">{t("form.label.email")}</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder={t("form.placeholder.email")}
-                  required
-                />
-
-                <label htmlFor="phone">{t("form.label.phone")}</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder={t("form.placeholder.phone")}
-                />
-
-                <label htmlFor="message">{t("form.label.message")}</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder={t("form.placeholder.message")}
-                  required
-                />
-
-                <button type="submit" className="btn-outline">
-                  {t("form.submit")}
-                </button>
-              </form>
+              <ContactForm lang={lang} t={t} />
             </div>
           </div>
         </section>
