@@ -177,6 +177,17 @@ const languages = [
   { code: "en", label: "EN" },
 ];
 
+function GTMNoScript() {
+  return (
+    <noscript
+      dangerouslySetInnerHTML={{
+        __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MB6HVFXN"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+      }}
+    />
+  );
+}
+
 function usePreferredLanguage(defaultLang = "fr") {
   const [lang, setLang] = useState(() => {
     if (typeof window === "undefined") return defaultLang;
@@ -712,35 +723,53 @@ function App() {
         <section id="contact">
           <div className="section-inner">
             <h2 className="section-title">{t("contact.title")}</h2>
-            <div className="contact-card">
-              <div className="contact-details">
-                <h3>Mathieu Courville</h3>
-
-                <div className="detail-label">{t("contact.label.title")}</div>
-                <div className="detail-line">{t("contact.role")}</div>
-
-                <div className="detail-label">{t("contact.label.phone")}</div>
-                <div className="detail-line">438-888-9044</div>
-
-                <div className="detail-label">{t("contact.label.email")}</div>
-                <div className="detail-line-email">
-                  maconneriegamma@gmail.com
+            <div className="contact-offer-grid">
+              {/* Left column: contact + map */}
+              <div className="contact-map-col">
+                <div className="contact-details">
+                  <h3>Mathieu Courville</h3>
+                  <div className="detail-label">{t("contact.label.title")}</div>
+                  <div className="detail-line">{t("contact.role")}</div>
+                  <div className="detail-label">{t("contact.label.phone")}</div>
+                  <div className="detail-line">438-888-9044</div>
+                  <div className="detail-label">{t("contact.label.email")}</div>
+                  <div className="detail-line-email">
+                    maconneriegamma@gmail.com
+                  </div>
+                  <div className="contact-actions">
+                    <a className="btn-outline" href="tel:438-888-9044">
+                      {t("cta.call")}
+                    </a>
+                    <a
+                      className="btn-outline"
+                      href="mailto:maconneriegamma@gmail.com"
+                    >
+                      {t("cta.email")}
+                    </a>
+                  </div>
                 </div>
-
-                <div className="contact-actions">
-                  <a className="btn-outline" href="tel:438-888-9044">
-                    {t("cta.call")}
-                  </a>
-                  <a
-                    className="btn-outline"
-                    href="mailto:maconneriegamma@gmail.com"
-                  >
-                    {t("cta.email")}
-                  </a>
+                <div className="map-embed">
+                  <iframe
+                    title="Maçonnerie Grand-Duc Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6652.712416241786!2d-73.40250549904331!3d45.48750785135877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9067fa9a92d63%3A0xf65a6cd99a73a1b0!2zMjg2MCBSdWUgUXVldmlsbG9uLCBTYWludC1IdWJlcnQsIFFDIEozWSA1SDMsINCa0LDQvdCw0LTQsA!5e0!3m2!1suk!2sua!4v1768510094520!5m2!1suk!2sua"
+                    width="100%"
+                    height="100%"
+                    style={{
+                      border: 0,
+                      borderRadius: 18,
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                      minHeight: 200,
+                    }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </div>
-
-              <ContactForm lang={lang} t={t} />
+              {/* Right column: offer request form */}
+              <div className="offer-form-col">
+                <ContactForm lang={lang} t={t} />
+              </div>
             </div>
           </div>
         </section>

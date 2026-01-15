@@ -431,6 +431,57 @@ form {
   margin-bottom: 1.2rem;
 }
 
+.contact-offer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+.contact-map-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.contact-details {
+  flex: 1 1 0;
+  margin-bottom: 1.5rem;
+}
+
+.map-embed {
+  flex: 1 1 0;
+  min-height: 200px;
+  height: 100%;
+}
+
+.offer-form-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: stretch;
+}
+
+.offer-form-col form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .contact-offer-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-map-col,
+  .offer-form-col {
+    height: auto;
+  }
+  .map-embed {
+    min-height: 200px;
+    height: 250px;
+  }
+}
+
 .detail-line,
 .detail-line-email {
   display: flex;
