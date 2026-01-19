@@ -724,7 +724,6 @@ function App() {
           <div className="section-inner">
             <h2 className="section-title">{t("contact.title")}</h2>
             <div className="contact-offer-grid">
-              {/* Left column: contact + map */}
               <div className="contact-map-col">
                 <div className="contact-details">
                   <h3>Mathieu Courville</h3>
@@ -766,7 +765,6 @@ function App() {
                   ></iframe>
                 </div>
               </div>
-              {/* Right column: offer request form */}
               <div className="offer-form-col">
                 <ContactForm lang={lang} t={t} />
               </div>
