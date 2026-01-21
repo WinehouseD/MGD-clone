@@ -8,6 +8,7 @@ const translations = {
     "nav.home": "Home",
     "nav.about": "Who We Are",
     "nav.services": "Services",
+    "nav.faq": "FAQ",
     "nav.assurance": "Credentials",
     "nav.contact": "Contact",
     "hero.description":
@@ -26,7 +27,7 @@ const translations = {
     "about.card2.p1":
       "We blend ancestral know-how with modern innovations to offer comprehensive services tailored to your needs. Every intervention complies with current standards and meets the highest aesthetic expectations.",
     "about.card2.p2":
-      "Our mission: protect, restore, and elevate Québec’s built heritage while guiding a new generation of owners through construction and major renovation projects.",
+      "Our mission: protect, restore, and elevate Québec's built heritage while guiding a new generation of owners through construction and major renovation projects.",
     "services.title": "Services",
     "services.intro":
       "Comprehensive masonry solutions to reinforce, protect, and showcase your property. Every intervention is executed with precision, durability, and respect for heritage.",
@@ -51,6 +52,7 @@ const translations = {
     "services.card7.title": "Professional Caulking",
     "services.card7.desc":
       "Durable, weather-tight caulking to prevent water infiltration, air leaks, and energy loss around critical junctions.",
+    "faq.title": "Frequently Asked Questions",
     "assurance.title": "Credentials & Assurance",
     "assurance.licenses.title": "Licenses & Certifications",
     "assurance.licenses.label": "RBQ:",
@@ -60,7 +62,7 @@ const translations = {
     "badges.insurance": "Liability Insurance",
     "badges.safety": "Safe Worksites",
     "testimonial.quote":
-      "“Organized, punctual, and exceptionally professional. The result exceeded our expectations and showcases our property.”",
+      "Organized, punctual, and exceptionally professional. The result exceeded our expectations and showcases our property.",
     "testimonial.author": "– Residential Client, Montréal",
     "contact.title": "Contact",
     "contact.label.title": "Title",
@@ -77,7 +79,7 @@ const translations = {
     "form.placeholder.message": "Describe your masonry needs...",
     "form.submit": "Submit Request",
     "form.sending": "Sending…",
-    "form.success": "Thanks! We’ll contact you shortly.",
+    "form.success": "Thanks! We'll contact you shortly.",
     "form.error": "Oops! Something went wrong. Please try again.",
     "footer.tagline": "Building with distinction, inspired by heritage.",
     "footer.rights": "All rights reserved.",
@@ -86,6 +88,7 @@ const translations = {
     "nav.home": "Accueil",
     "nav.about": "Qui nous sommes",
     "nav.services": "Services",
+    "nav.faq": "FAQ",
     "nav.assurance": "Certifications",
     "nav.contact": "Contact",
     "hero.description":
@@ -129,6 +132,7 @@ const translations = {
     "services.card7.title": "Calfeutrage",
     "services.card7.desc":
       "Solutions de calfeutrage durables pour protéger vos structures contre les infiltrations d'eau et améliorer l'efficacité énergétique.",
+    "faq.title": "Foire aux questions",
     "assurance.title": "Certifications et garanties",
     "assurance.licenses.title": "Licences et certifications",
     "assurance.licenses.label": "RBQ :",
@@ -168,6 +172,7 @@ const navLinks = [
   { id: "hero", labelKey: "nav.home" },
   { id: "about", labelKey: "nav.about" },
   { id: "services", labelKey: "nav.services" },
+  { id: "faq", labelKey: "nav.faq" },
   { id: "assurance", labelKey: "nav.assurance" },
   { id: "contact", labelKey: "nav.contact" },
 ];
@@ -307,8 +312,41 @@ function ContactForm({ lang, t }) {
   );
 }
 
+function FAQItem({ question, answer, isOpen, onToggle }) {
+  return (
+    <div className="faq-item">
+      <button
+        className="faq-question"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+      >
+        <span>{question}</span>
+        <svg
+          className={`faq-icon ${isOpen ? "open" : ""}`}
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      {isOpen && (
+        <div className="faq-answer">
+          <p>{answer}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function App() {
   const [lang, setLang] = usePreferredLanguage("fr");
+  const [openFAQ, setOpenFAQ] = useState(null);
 
   const t = (key) => translations[lang]?.[key] ?? translations.fr[key] ?? key;
 
@@ -600,8 +638,16 @@ function App() {
         ),
       },
     ],
-    [t]
+    [t],
   );
+
+  const faqItems = [
+    { question: "TEST", answer: "TEST" },
+    { question: "TEST", answer: "TEST" },
+    { question: "TEST", answer: "TEST" },
+    { question: "TEST", answer: "TEST" },
+    { question: "TEST", answer: "TEST" },
+  ];
 
   return (
     <>
@@ -693,6 +739,23 @@ function App() {
           </div>
         </section>
 
+        <section id="faq">
+          <div className="section-inner">
+            <h2 className="section-title">{t("faq.title")}</h2>
+            <div className="faq-container">
+              {faqItems.map((item, index) => (
+                <FAQItem
+                  key={index}
+                  question={item.question}
+                  answer={item.answer}
+                  isOpen={openFAQ === index}
+                  onToggle={() => setOpenFAQ(openFAQ === index ? null : index)}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="assurance">
           <div className="section-inner">
             <h2 className="section-title">{t("assurance.title")}</h2>
@@ -733,7 +796,7 @@ function App() {
                   <div className="detail-line">438-888-9044</div>
                   <div className="detail-label">{t("contact.label.email")}</div>
                   <div className="detail-line-email">
-                    maconneriegamma@gmail.com
+                    maconnerie@grand-duc.ca
                   </div>
                   <div className="contact-actions">
                     <a className="btn-outline" href="tel:438-888-9044">
@@ -741,7 +804,7 @@ function App() {
                     </a>
                     <a
                       className="btn-outline"
-                      href="mailto:maconneriegamma@gmail.com"
+                      href="mailto:maconnerie@grand-duc.ca"
                     >
                       {t("cta.email")}
                     </a>
@@ -750,7 +813,7 @@ function App() {
                 <div className="map-embed">
                   <iframe
                     title="Maçonnerie Grand-Duc Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6652.712416241786!2d-73.40250549904331!3d45.48750785135877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9067fa9a92d63%3A0xf65a6cd99a73a1b0!2zMjg2MCBSdWUgUXVldmlsbG9uLCBTYWludC1IdWJlcnQsIFFDIEozWSA1SDMsINCa0LDQvdCw0LTQsA!5e0!3m2!1suk!2sua!4v1768510094520!5m2!1suk!2sua"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18795.70356705251!2d-73.59439340959469!3d45.55036473422512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc919539f993371%3A0xdce54e37b6f60f01!2zNjI3MCBCZCBTYWludC1NaWNoZWwgIzQsIE1vbnRyZWFsLCBRQyBIMVkgMkU3LCDQmtCw0L3QsNC00LA!5e0!3m2!1suk!2sua!4v1769027160235!5m2!1suk!2sua"
                     width="100%"
                     height="100%"
                     style={{
