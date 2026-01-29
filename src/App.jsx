@@ -663,7 +663,6 @@ function App() {
               width={40}
               height={50}
               style={{ objectFit: "cover" }}
-              fetchPriority="high"
             />
             Maçonnerie Grand-Duc
           </a>
@@ -703,7 +702,6 @@ function App() {
                 src={icon}
                 alt="Maçonnerie Grand-Duc crest"
                 style={{ width: 300, objectFit: "cover" }}
-                fetchPriority="high"
               />
             </div>
           </div>
