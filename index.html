@@ -41,6 +41,14 @@
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <link rel="manifest" href="/manifest.json" />
 
+    <link
+      rel="preload"
+      as="image"
+      href="/logo.svg"
+      imagesrcset="/logo.svg"
+      fetchpriority="high"
+    />
+
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
