@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import "./App.css";
-import icon from "./assets/logo.svg";
+import icon from "/logo.svg";
 
 const translations = {
   en: {
@@ -348,7 +348,10 @@ function App() {
   const [lang, setLang] = usePreferredLanguage("fr");
   const [openFAQ, setOpenFAQ] = useState(null);
 
-  const t = (key) => translations[lang]?.[key] ?? translations.fr[key] ?? key;
+  const t = useCallback(
+    (key) => translations[lang]?.[key] ?? translations.fr[key] ?? key,
+    [lang],
+  );
 
   const handleNavClick = (id) => (event) => {
     event.preventDefault();
@@ -660,6 +663,7 @@ function App() {
               width={40}
               height={50}
               style={{ objectFit: "cover" }}
+              fetchPriority="high"
             />
             Maçonnerie Grand-Duc
           </a>
@@ -699,6 +703,7 @@ function App() {
                 src={icon}
                 alt="Maçonnerie Grand-Duc crest"
                 style={{ width: 300, objectFit: "cover" }}
+                fetchPriority="high"
               />
             </div>
           </div>
@@ -761,7 +766,7 @@ function App() {
             <h2 className="section-title">{t("assurance.title")}</h2>
             <div className="credentials">
               <div className="credential-item">
-                <h4>{t("assurance.licenses.title")}</h4>
+                <h3>{t("assurance.licenses.title")}</h3>
                 <p>
                   <span>{t("assurance.licenses.label")} </span>
                   <strong>5651-0033-01</strong>

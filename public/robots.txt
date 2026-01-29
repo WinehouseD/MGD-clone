@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maconnerie.grand-duc.ca/sitemap.xml
