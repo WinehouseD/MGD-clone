@@ -2,185 +2,10 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import "./App.css";
 import icon from "/logo.svg";
-
-const translations = {
-  en: {
-    "nav.home": "Home",
-    "nav.about": "Who We Are",
-    "nav.services": "Services",
-    "nav.faq": "FAQ",
-    "nav.assurance": "Credentials",
-    "nav.contact": "Contact",
-    "hero.description":
-      "Trusted masonry company, proudly managed by Mathieu Courville.",
-    "cta.call": "Call",
-    "cta.quote": "Request a Quote",
-    "cta.email": "Send an Email",
-    "about.title": "Who We Are",
-    "about.card1.p1":
-      "Since its founding, Maçonnerie Grand-Duc has embodied artisanal excellence and organizational rigor. Led by Mathieu Courville, we deliver residential and commercial projects focused on quality, durability, and respect for tradition.",
-    "about.card1.p2":
-      "Our seasoned masons master every technique, from structural work to bespoke finishes. Each job site is managed with transparency, safety, and meticulous attention to detail, ensuring flawless execution and timeless results.",
-    "about.card1.p3":
-      "Built stone by stone, our reputation rests on trust with partners, suppliers, and clients. Maçonnerie Grand-Duc remains your strategic ally for work that stands the test of time with elegance.",
-    "about.card1.signature": "Mathieu Courville, Managing Director",
-    "about.card2.p1":
-      "We blend ancestral know-how with modern innovations to offer comprehensive services tailored to your needs. Every intervention complies with current standards and meets the highest aesthetic expectations.",
-    "about.card2.p2":
-      "Our mission: protect, restore, and elevate Québec's built heritage while guiding a new generation of owners through construction and major renovation projects.",
-    "services.title": "Services",
-    "services.intro":
-      "Comprehensive masonry solutions to reinforce, protect, and showcase your property. Every intervention is executed with precision, durability, and respect for heritage.",
-    "services.card1.title": "Brick & Stone Installation",
-    "services.card1.desc":
-      "Precision laying of brick, block, and natural stone for new builds, additions, and façade upgrades.",
-    "services.card2.title": "Tuckpointing & Repointing",
-    "services.card2.desc":
-      "Renew mortar joints to seal out moisture, correct deterioration, and restore the character of your masonry.",
-    "services.card3.title": "Sill & Lintel Replacement",
-    "services.card3.desc":
-      "Remove and replace compromised window sills and structural lintels to safeguard openings and load paths.",
-    "services.card4.title": "Bulged Wall Repair",
-    "services.card4.desc":
-      "Stabilize bowing or bulged masonry with structural reinforcement, selective rebuilding, and anchoring systems.",
-    "services.card5.title": "Expansion Joints",
-    "services.card5.desc":
-      "Install or refresh expansion joints to absorb movement, prevent cracking, and extend the life of exterior walls.",
-    "services.card6.title": "Selective Demolition",
-    "services.card6.desc":
-      "Careful dismantling of masonry elements to prepare for restoration, upgrades, or safe removal of damaged sections.",
-    "services.card7.title": "Professional Caulking",
-    "services.card7.desc":
-      "Durable, weather-tight caulking to prevent water infiltration, air leaks, and energy loss around critical junctions.",
-    "faq.title": "Frequently Asked Questions",
-    "assurance.title": "Credentials & Assurance",
-    "assurance.licenses.title": "Licenses & Certifications",
-    "assurance.licenses.label": "RBQ:",
-    "assurance.licenses.description":
-      "We operate under current provincial licenses, ensuring work that meets building codes and industry standards.",
-    "badges.rbq": "RBQ Certified",
-    "badges.insurance": "Liability Insurance",
-    "badges.safety": "Safe Worksites",
-    "testimonial.quote":
-      "Organized, punctual, and exceptionally professional. The result exceeded our expectations and showcases our property.",
-    "testimonial.author": "– Residential Client, Montréal",
-    "contact.title": "Contact",
-    "contact.label.title": "Title",
-    "contact.role": "Managing Director",
-    "contact.label.phone": "Phone",
-    "contact.label.email": "Email",
-    "form.label.name": "Full Name",
-    "form.label.email": "Email",
-    "form.label.phone": "Phone",
-    "form.label.message": "About Your Project",
-    "form.placeholder.name": "Your name",
-    "form.placeholder.email": "name@example.com",
-    "form.placeholder.phone": "(xxx) xxx-xxxx",
-    "form.placeholder.message": "Describe your masonry needs...",
-    "form.submit": "Submit Request",
-    "form.sending": "Sending…",
-    "form.success": "Thanks! We'll contact you shortly.",
-    "form.error": "Oops! Something went wrong. Please try again.",
-    "footer.tagline": "Building with distinction, inspired by heritage.",
-    "footer.rights": "All rights reserved.",
-  },
-  fr: {
-    "nav.home": "Accueil",
-    "nav.about": "Qui nous sommes",
-    "nav.services": "Services",
-    "nav.faq": "FAQ",
-    "nav.assurance": "Certifications",
-    "nav.contact": "Contact",
-    "hero.description":
-      "Entreprise de maçonnerie de confiance, fièrement dirigée par Mathieu Courville.",
-    "cta.call": "Appeler",
-    "cta.quote": "Demander une soumission",
-    "cta.email": "Envoyer un courriel",
-    "about.title": "Qui nous sommes",
-    "about.card1.p1":
-      "Depuis sa fondation, Maçonnerie Grand-Duc incarne l'excellence artisanale et la rigueur organisationnelle. Sous la direction de Mathieu Courville, nous réalisons des projets résidentiels et commerciaux axés sur la qualité, la durabilité et le respect des traditions.",
-    "about.card1.p2":
-      "Nos maçons d'expérience maîtrisent toutes les techniques, des travaux structuraux aux finitions sur mesure. Chaque chantier est géré avec transparence, sécurité et souci du détail afin d'assurer une exécution impeccable et des résultats intemporels.",
-    "about.card1.p3":
-      "Bâtie pierre par pierre, notre réputation repose sur la confiance de nos partenaires, fournisseurs et clients. Maçonnerie Grand-Duc demeure votre allié stratégique pour des travaux qui traversent le temps avec élégance.",
-    "about.card1.signature": "Mathieu Courville, Directeur général",
-    "about.card2.p1":
-      "Nous marions un savoir-faire ancestral aux innovations modernes pour offrir des services complets adaptés à vos besoins. Chaque intervention respecte les normes en vigueur et répond aux attentes esthétiques les plus élevées.",
-    "about.card2.p2":
-      "Notre mission : protéger, restaurer et mettre en valeur le patrimoine bâti du Québec tout en accompagnant une nouvelle génération de propriétaires dans leurs projets de construction et de rénovation majeure.",
-    "services.title": "Services",
-    "services.intro":
-      "Une gamme complète de services pour rehausser vos structures, des fondations aux finitions. Chaque projet est guidé par notre vision : bâtir avec précision et fierté.",
-    "services.card1.title": "Pose de brique et pierre",
-    "services.card1.desc":
-      "Gestion clé en main de vos projets de maçonnerie, coordination des équipes et des échéanciers pour une exécution sans compromis.",
-    "services.card2.title": "Rejointoiement",
-    "services.card2.desc":
-      "Assemblage expert de briques, blocs et pierres naturelles avec des finitions dignes des bâtiments emblématiques.",
-    "services.card3.title": "Changement d'allège et linteau",
-    "services.card3.desc":
-      "Rejointoiement, stabilisation et remplacement des éléments défaillants afin de restaurer la solidité des murs et des fondations.",
-    "services.card4.title": "Réparation de ventre de boeuf",
-    "services.card4.desc":
-      "Interventions délicates sur les bâtiments historiques, dans le respect des matériaux d'origine et des normes de conservation.",
-    "services.card5.title": "Joint d'expansion",
-    "services.card5.desc":
-      "Créations sur mesure pour corniches, linteaux, murs signature et éléments architecturaux distinctifs.",
-    "services.card6.title": "Démolition",
-    "services.card6.desc":
-      "Services de démolition sécuritaires et efficaces, préparant le terrain pour vos nouveaux projets de construction ou de rénovation.",
-    "services.card7.title": "Calfeutrage",
-    "services.card7.desc":
-      "Solutions de calfeutrage durables pour protéger vos structures contre les infiltrations d'eau et améliorer l'efficacité énergétique.",
-    "faq.title": "Foire aux questions",
-    "assurance.title": "Certifications et garanties",
-    "assurance.licenses.title": "Licences et certifications",
-    "assurance.licenses.label": "RBQ :",
-    "assurance.licenses.description":
-      "Nous détenons les licences provinciales en vigueur, assurant des travaux conformes aux codes du bâtiment et aux normes de l'industrie.",
-    "badges.rbq": "Certifié RBQ",
-    "badges.insurance": "Assurance responsabilité",
-    "badges.safety": "Chantiers sécuritaires",
-    "testimonial.quote":
-      "« Organisés, ponctuels et remarquablement professionnels. Le résultat dépasse nos attentes et met en valeur notre propriété. »",
-    "testimonial.author": "– Client résidentiel, Montréal",
-    "contact.title": "Contact",
-    "contact.label.title": "Titre",
-    "contact.role": "Directeur général",
-    "contact.label.phone": "Téléphone",
-    "contact.label.email": "Courriel",
-    "form.label.name": "Nom complet",
-    "form.label.email": "Courriel",
-    "form.label.phone": "Téléphone",
-    "form.label.message": "À propos de votre projet",
-    "form.placeholder.name": "Votre nom",
-    "form.placeholder.email": "nom@example.com",
-    "form.placeholder.phone": "(xxx) xxx-xxxx",
-    "form.placeholder.message": "Décrivez votre projet de maçonnerie...",
-    "form.submit": "Soumettre la demande",
-    "form.sending": "Envoi en cours…",
-    "form.success": "Merci! Nous vous contacterons sous peu.",
-    "form.error": "Oups! Une erreur est survenue. Veuillez réessayer.",
-    "footer.tagline": "Construire avec distinction, inspiré par le patrimoine.",
-    "footer.rights": "Tous droits réservés.",
-  },
-};
+import translations from "./i18n";
+import { navLinks, faqKeys, languages } from "./constants";
 
 const currentYear = new Date().getFullYear();
-
-const navLinks = [
-  { id: "hero", labelKey: "nav.home" },
-  { id: "about", labelKey: "nav.about" },
-  { id: "services", labelKey: "nav.services" },
-  { id: "faq", labelKey: "nav.faq" },
-  { id: "assurance", labelKey: "nav.assurance" },
-  { id: "contact", labelKey: "nav.contact" },
-];
-
-const languages = [
-  { code: "fr", label: "FR" },
-  { code: "en", label: "EN" },
-];
 
 function GTMNoScript() {
   return (
@@ -216,24 +41,94 @@ const initialForm = {
   message: "",
 };
 
-function ContactForm({ lang, t }) {
-  const [formValues, setFormValues] = useState(() => ({ ...initialForm }));
+function formatPhone(value) {
+  const digits = value.replace(/\D/g, "").slice(0, 10);
+  if (digits.length === 0) return "";
+  if (digits.length <= 3) return `(${digits}`;
+  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+}
+
+function isValidPhone(value) {
+  const digits = value.replace(/\D/g, "");
+  if (digits.length === 0) return true;
+  if (digits.length !== 10) return false;
+  if (digits[0] === "0" || digits[0] === "1") return false;
+  if (digits[3] === "0" || digits[3] === "1") return false;
+  return true;
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+}
+
+function isValidName(value) {
+  const trimmed = value.trim();
+  if (trimmed.length < 2) return false;
+  if (trimmed.length > 80) return false;
+  return /^[a-zA-ZÀ-ÿ\s'-]+$/.test(trimmed);
+}
+
+function isValidMessage(value) {
+  const trimmed = value.trim();
+  return trimmed.length >= 10 && trimmed.length <= 500;
+}
+
+export function ContactForm({ lang, t }) {
+  const [formValues, setFormValues] = useState({ ...initialForm });
   const [state, handleSubmit] = useForm(FORMSPREE_FORM_ID);
   const hasErrors = Array.isArray(state.errors) && state.errors.length > 0;
 
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    phone: false,
+    message: false,
+  });
+
+  const nameValid = isValidName(formValues.name);
+  const emailValid = isValidEmail(formValues.email);
+  const phoneValid = isValidPhone(formValues.phone);
+  const messageValid = isValidMessage(formValues.message);
+
+  const showNameError = touched.name && !nameValid;
+  const showEmailError = touched.email && !emailValid;
+  const showPhoneError = touched.phone && !phoneValid;
+  const showMessageError = touched.message && !messageValid;
+
+  const isFormValid = nameValid && emailValid && phoneValid && messageValid;
+  const isButtonDisabled = !isFormValid || state.submitting;
+
   useEffect(() => {
     if (state.succeeded) {
-      setFormValues(() => ({ ...initialForm }));
+      setFormValues({ ...initialForm });
+      setTouched({ name: false, email: false, phone: false, message: false });
     }
   }, [state.succeeded]);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onSubmit = (event) => {
-    handleSubmit(event);
+  const handlePhoneChange = (e) => {
+    const formatted = formatPhone(e.target.value);
+    setFormValues((prev) => ({ ...prev, phone: formatted }));
+  };
+
+  const handleBlur = (e) => {
+    const { name } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+  };
+
+  const onSubmit = (e) => {
+    setTouched({ name: true, email: true, phone: true, message: true });
+
+    if (!isFormValid) {
+      e.preventDefault();
+      return;
+    }
+    handleSubmit(e);
   };
 
   return (
@@ -246,8 +141,18 @@ function ContactForm({ lang, t }) {
         placeholder={t("form.placeholder.name")}
         value={formValues.name}
         onChange={handleChange}
+        onBlur={handleBlur}
         required
+        maxLength={80}
+        aria-invalid={showNameError}
+        aria-describedby={showNameError ? "name-error" : undefined}
+        className={showNameError ? "input-error" : ""}
       />
+      {showNameError && (
+        <p id="name-error" className="field-error" role="alert">
+          {t("form.error.name")}
+        </p>
+      )}
 
       <label htmlFor="email">{t("form.label.email")}</label>
       <input
@@ -257,8 +162,17 @@ function ContactForm({ lang, t }) {
         placeholder={t("form.placeholder.email")}
         value={formValues.email}
         onChange={handleChange}
+        onBlur={handleBlur}
         required
+        aria-invalid={showEmailError}
+        aria-describedby={showEmailError ? "email-error" : undefined}
+        className={showEmailError ? "input-error" : ""}
       />
+      {showEmailError && (
+        <p id="email-error" className="field-error" role="alert">
+          {t("form.error.email")}
+        </p>
+      )}
       <ValidationError prefix="Email" field="email" errors={state.errors} />
 
       <label htmlFor="phone">{t("form.label.phone")}</label>
@@ -266,10 +180,20 @@ function ContactForm({ lang, t }) {
         id="phone"
         name="phone"
         type="tel"
-        placeholder={t("form.placeholder.phone")}
+        placeholder="(514) 555-1234"
         value={formValues.phone}
-        onChange={handleChange}
+        onChange={handlePhoneChange}
+        onBlur={handleBlur}
+        maxLength={14}
+        aria-invalid={showPhoneError}
+        aria-describedby={showPhoneError ? "phone-error" : undefined}
+        className={showPhoneError ? "input-error" : ""}
       />
+      {showPhoneError && (
+        <p id="phone-error" className="field-error" role="alert">
+          {t("form.error.phone")}
+        </p>
+      )}
 
       <label htmlFor="message">{t("form.label.message")}</label>
       <textarea
@@ -278,13 +202,22 @@ function ContactForm({ lang, t }) {
         placeholder={t("form.placeholder.message")}
         value={formValues.message}
         onChange={handleChange}
+        onBlur={handleBlur}
         required
+        maxLength={500}
+        aria-invalid={showMessageError}
+        aria-describedby={showMessageError ? "message-error" : undefined}
+        className={showMessageError ? "input-error" : ""}
       />
+      {showMessageError && (
+        <p id="message-error" className="field-error" role="alert">
+          {t("form.error.message")}
+        </p>
+      )}
       <ValidationError prefix="Message" field="message" errors={state.errors} />
 
       <input type="hidden" name="_language" value={lang} />
       <input type="hidden" name="_subject" value="New masonry inquiry" />
-
       <input
         type="text"
         name="_gotcha"
@@ -293,7 +226,11 @@ function ContactForm({ lang, t }) {
         autoComplete="off"
       />
 
-      <button type="submit" className="btn-outline" disabled={state.submitting}>
+      <button
+        type="submit"
+        className={isButtonDisabled ? "btn-outline-disabled" : "btn-outline"}
+        disabled={isButtonDisabled}
+      >
         {state.submitting ? t("form.sending") : t("form.submit")}
       </button>
 
@@ -357,6 +294,15 @@ function App() {
     event.preventDefault();
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const faqItems = useMemo(
+    () =>
+      faqKeys.map(({ questionKey, answerKey }) => ({
+        question: t(questionKey),
+        answer: t(answerKey),
+      })),
+    [t],
+  );
 
   const serviceCards = useMemo(
     () => [
@@ -644,14 +590,6 @@ function App() {
     [t],
   );
 
-  const faqItems = [
-    { question: "TEST", answer: "TEST" },
-    { question: "TEST", answer: "TEST" },
-    { question: "TEST", answer: "TEST" },
-    { question: "TEST", answer: "TEST" },
-    { question: "TEST", answer: "TEST" },
-  ];
-
   return (
     <>
       <header>
@@ -816,7 +754,7 @@ function App() {
                 <div className="map-embed">
                   <iframe
                     title="Maçonnerie Grand-Duc Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18795.70356705251!2d-73.59439340959469!3d45.55036473422512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc919539f993371%3A0xdce54e37b6f60f01!2zNjI3MCBCZCBTYWludC1NaWNoZWwgIzQsIE1vbnRyZWFsLCBRQyBIMVkgMkU3LCDQmtCw0L3QsNC00LA!5e0!3m2!1suk!2sua!4v1769027160235!5m2!1suk!2sua"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2793.8350632759593!2d-73.58306139999999!3d45.5536434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91953845ca9af%3A0x4c11177866912b2!2s3231%20Rue%20de%20Bellechasse%20%232%2C%20Montreal%2C%20QC%20H1Y%201K3%2C%20Canada!5e0!3m2!1sen!2sua!4v1773344955039!5m2!1sen!2sua"
                     width="100%"
                     height="100%"
                     style={{

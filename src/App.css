@@ -211,6 +211,17 @@ main {
     border 0.3s ease;
 }
 
+.btn-outline-disabled {
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--border);
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 .btn-outline:hover {
   background: var(--white);
   color: var(--midnight);
@@ -507,6 +518,50 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 2.5rem;
   align-items: start;
+}
+
+.input-error {
+  border: 2px solid #d32f2f;
+  outline-color: #d32f2f;
+  background-color: rgba(211, 47, 47, 0.04);
+}
+
+.input-error:focus {
+  border-color: #d32f2f;
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.15);
+}
+
+.field-error {
+  color: #d32f2f;
+  font-size: 0.82rem;
+  margin: 0.25rem 0 0.75rem;
+  padding: 0;
+  line-height: 1.4;
+}
+
+button.btn-outline:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-success {
+  color: #2e7d32;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  padding: 0.6rem 1rem;
+  background-color: rgba(46, 125, 50, 0.08);
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.form-error {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  padding: 0.6rem 1rem;
+  background-color: rgba(211, 47, 47, 0.08);
+  border-radius: 6px;
 }
 
 .contact-details,
