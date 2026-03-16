@@ -48,6 +48,9 @@ const fr = {
     "Solutions de calfeutrage durables pour protéger vos structures contre les infiltrations d'eau et améliorer l'efficacité énergétique.",
   "faq.title": "Foire aux questions",
   "faq.q1": "Travaillez-vous sur des résidences et des bâtiments commerciaux ?",
+  "services.card8.title": "Expertise & Inspection",
+  "services.card8.desc":
+    "Évaluation professionnelle de l'état de votre maçonnerie, diagnostic structurel et recommandations détaillées pour vos projets de rénovation ou d'entretien.",
   "faq.a1":
     "Oui, nous desservons fièrement une clientèle résidentielle et commerciale dans la grande région de Montréal. Avec un solide bilan de plus de quatre projets de bâtiments réalisés et une cote de satisfaction client de 4,1 sur 5, nous nous engageons à offrir un travail de qualité sur chaque chantier — qu'il s'agisse d'une maison familiale ou d'une propriété commerciale.",
   "faq.q2":

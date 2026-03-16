@@ -7,17 +7,6 @@ import { navLinks, faqKeys, languages } from "./constants";
 
 const currentYear = new Date().getFullYear();
 
-function GTMNoScript() {
-  return (
-    <noscript
-      dangerouslySetInnerHTML={{
-        __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MB6HVFXN"
-          height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-      }}
-    />
-  );
-}
-
 function usePreferredLanguage(defaultLang = "fr") {
   const [lang, setLang] = useState(() => {
     if (typeof window === "undefined") return defaultLang;
@@ -180,7 +169,7 @@ export function ContactForm({ lang, t }) {
         id="phone"
         name="phone"
         type="tel"
-        placeholder="(514) 555-1234"
+        placeholder="(xxx) xxx-xxxx"
         value={formValues.phone}
         onChange={handlePhoneChange}
         onBlur={handleBlur}
@@ -582,6 +571,44 @@ function App() {
               stroke="#16264b"
               strokeWidth="3"
               strokeLinecap="round"
+            />
+          </svg>
+        ),
+      },
+      {
+        key: "card8",
+        title: t("services.card8.title"),
+        description: t("services.card8.desc"),
+        icon: (
+          <svg className="service-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="28" cy="28" r="14" fill="#16264b" opacity="0.12" />
+            <circle
+              cx="28"
+              cy="28"
+              r="12"
+              stroke="#16264b"
+              strokeWidth="3"
+              fill="none"
+            />
+            <path
+              d="M37 37l12 12"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <path
+              d="M23 28l4 4 8-8"
+              stroke="#16264b"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M49 49l5 5"
+              stroke="#16264b"
+              strokeWidth="4"
+              strokeLinecap="round"
+              opacity="0.6"
             />
           </svg>
         ),

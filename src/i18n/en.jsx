@@ -48,6 +48,9 @@ const en = {
     "Durable, weather-tight caulking to prevent water infiltration, air leaks, and energy loss around critical junctions.",
   "faq.title": "Frequently Asked Questions",
   "faq.q1": "Do you work on both residential homes and commercial buildings?",
+  "services.card8.title": "Expertise & Inspection",
+  "services.card8.desc":
+    "Professional assessment of your masonry condition, structural diagnosis, and detailed recommendations for your renovation or maintenance projects.",
   "faq.a1":
     "Yes, we proudly serve both residential and commercial clients across the Greater Montreal area. With a strong track record of over four completed building projects and a customer satisfaction rating of 4.1 out of 5, we are committed to delivering quality craftsmanship on every job — whether it's a family home or a commercial property.",
   "faq.q2": "Do you handle large-scale commercial masonry projects?",
