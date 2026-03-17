@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import "./App.css";
-import icon from "/logo.svg";
+import icon from "./assets/logo.svg";
 import translations from "./i18n";
 import { navLinks, faqKeys, languages } from "./constants";
 
@@ -278,6 +278,19 @@ function App() {
     (key) => translations[lang]?.[key] ?? translations.fr[key] ?? key,
     [lang],
   );
+
+  useEffect(() => {
+    document.title = t("meta.title");
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", t("meta.description"));
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", t("meta.title"));
+
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute("content", t("meta.description"));
+  }, [lang, t]);
 
   const handleNavClick = (id) => (event) => {
     event.preventDefault();

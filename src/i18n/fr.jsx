@@ -1,4 +1,7 @@
 const fr = {
+  "meta.title": "Maçonnerie Grand-Duc | Expert en maçonnerie à Montréal",
+  "meta.description":
+    "Maçonnerie Grand-Duc à Montréal : pose de brique, réparation de ventre de bœuf, rejointoiement, calfeutrage et restauration patrimoniale.",
   "nav.home": "Accueil",
   "nav.about": "Qui nous sommes",
   "nav.services": "Services",
@@ -72,6 +75,9 @@ const fr = {
     "Quelles informations devez-vous recevoir de ma part pour fournir une estimation précise ?",
   "faq.a6":
     "Afin de vous fournir l'estimation la plus précise possible, il est utile de nous communiquer le plus de détails possible, notamment : la nature des travaux souhaités, l'emplacement sur la propriété, la superficie de la zone concernée, le nombre d'étages ou de sections de mur impliqués, ainsi que l'échéancier souhaité. Plus vous partagez d'informations dès le départ, plus rapidement et précisément nous pourrons préparer votre soumission. Si vous n'êtes pas certain des détails, ne vous inquiétez pas — nous vous guiderons avec plaisir lors d'une consultation.",
+  "faq.q7": "Quels types de briques utilisez-vous ?",
+  "faq.a7":
+    "Nous utilisons des briques de qualité supérieure adaptées au climat québécois, incluant des briques d'argile traditionnelles et des briques de récupération pour les projets patrimoniaux.",
   "assurance.title": "Certifications et garanties",
   "assurance.licenses.title": "Licences et certifications",
   "assurance.licenses.label": "RBQ :",

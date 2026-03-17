@@ -123,9 +123,7 @@ main {
   position: relative;
   color: var(--text-primary);
   overflow: hidden;
-  background:
-    linear-gradient(rgba(15, 26, 51, 0.9), rgba(15, 26, 51, 0.88)),
-    url("./assets/bg-placeolder.png") center/cover no-repeat;
+  background: linear-gradient(rgba(15, 26, 51, 0.9), rgba(15, 26, 51, 0.88));
 }
 
 .hero::before {

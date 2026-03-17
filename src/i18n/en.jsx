@@ -1,4 +1,7 @@
 const en = {
+  "meta.title": "Maçonnerie Grand-Duc | Masonry Expert in Montreal",
+  "meta.description":
+    "Maçonnerie Grand-Duc in Montreal: bricklaying, bulging wall repair, repointing, caulking and heritage restoration.",
   "nav.home": "Home",
   "nav.about": "Who We Are",
   "nav.services": "Services",
@@ -70,6 +73,9 @@ const en = {
     "What information do you need from me to provide an accurate estimate?",
   "faq.a6":
     "To give you the most accurate estimate possible, it helps to provide us with as much detail as you can, including the scope of work (what exactly needs to be done), the location on the property, the size of the area, how many floors or wall sections are involved, and your preferred timeline. The more information you share upfront, the faster and more accurately we can prepare your quote. Don't worry if you're unsure — we're happy to guide you through it during a consultation.",
+  "faq.q7": "What types of bricks do you use?",
+  "faq.a7":
+    "We use high-quality bricks suitable for the Quebec climate, including traditional clay bricks and reclaimed bricks for heritage projects.",
   "assurance.title": "Credentials & Assurance",
   "assurance.licenses.title": "Licenses & Certifications",
   "assurance.licenses.label": "RBQ:",
