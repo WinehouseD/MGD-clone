@@ -15,7 +15,7 @@ const fr = {
   "cta.email": "Envoyer un courriel",
   "about.title": "Qui nous sommes",
   "about.card1.p1":
-    "Depuis sa fondation, Maçonnerie Grand-Duc incarne l'excellence artisanale et la rigueur organisationnelle. Sous la direction de Mathieu Courville, nous réalisons des projets résidentiels et commerciaux axés sur la qualité, la durabilité et le respect des traditions.",
+    "Pose soignée de briques, parpaings et pierres naturelles pour projets neufs, extensions et ravalements de façades.",
   "about.card1.p2":
     "Nos maçons d'expérience maîtrisent toutes les techniques, des travaux structuraux aux finitions sur mesure. Chaque chantier est géré avec transparence, sécurité et souci du détail afin d'assurer une exécution impeccable et des résultats intemporels.",
   "about.card1.p3":
@@ -42,7 +42,7 @@ const fr = {
     "Interventions délicates sur les bâtiments historiques, dans le respect des matériaux d'origine et des normes de conservation.",
   "services.card5.title": "Joint d'expansion",
   "services.card5.desc":
-    "Créations sur mesure pour corniches, linteaux, murs signature et éléments architecturaux distinctifs.",
+    "Installation ou rénovation de joints de dilatation pour absorber les mouvements, prévenir les fissures et prolonger la durée de vie des murs extérieurs. ",
   "services.card6.title": "Démolition",
   "services.card6.desc":
     "Services de démolition sécuritaires et efficaces, préparant le terrain pour vos nouveaux projets de construction ou de rénovation.",
