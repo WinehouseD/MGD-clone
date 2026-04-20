@@ -8,6 +8,7 @@ const en = {
   "nav.faq": "FAQ",
   "nav.assurance": "Credentials",
   "nav.contact": "Contact",
+  "hero.location": "Montréal · Laval · Longueuil · South Shore",
   "hero.description":
     "Trusted masonry company, proudly managed by Mathieu Courville.",
   "cta.call": "Call",

@@ -74,6 +74,7 @@ export default function HomePage({ lang, setLang, t }) {
             <div className="hero-text">
               <h1>Maçonnerie Grand-Duc</h1>
               <p>{t("hero.description")}</p>
+              <p className="hero-location">📍 {t("hero.location")}</p>
               <div className="cta-buttons">
                 <a className="btn-primary" href="tel:438-888-9044">
                   {t("cta.call")}
@@ -97,9 +98,11 @@ export default function HomePage({ lang, setLang, t }) {
           </div>
         </section>
 
-        <section id="about">
+        <section id="about" aria-labelledby="about-heading">
           <div className="section-inner">
-            <h2 className="section-title">{t("about.title")}</h2>
+            <h2 id="about-heading" className="section-title">
+              {t("about.title")}
+            </h2>
             <div className="about-grid">
               <div className="about-card">
                 <p>{t("about.card1.p1")}</p>
@@ -115,11 +118,12 @@ export default function HomePage({ lang, setLang, t }) {
           </div>
         </section>
 
-        <section id="services">
+        <section id="services" aria-labelledby="services-heading">
           <div className="section-inner">
-            <h2 className="section-title">{t("services.title")}</h2>
+            <h2 id="services-heading" className="section-title">
+              {t("services.title")}
+            </h2>
             <p>{t("services.intro")}</p>
-
             <div className="services-grid">
               {serviceCards.map(({ key, slug, icon, title, description }) => (
                 <article
@@ -140,18 +144,26 @@ export default function HomePage({ lang, setLang, t }) {
                   {icon}
                   <h3>{title}</h3>
                   <p>{description}</p>
-                  <span className="service-card-cta" aria-hidden="true">
+                  <a
+                    href={`/services/${slug}`}
+                    className="service-card-cta"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     {t("service.card.readmore")} →
-                  </span>
+                  </a>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="faq">
+        <section id="faq" aria-labelledby="faq-heading">
           <div className="section-inner">
-            <h2 className="section-title">{t("faq.title")}</h2>
+            <h2 id="faq-heading" className="section-title">
+              {t("faq.title")}
+            </h2>
             <div className="faq-container">
               {faqItems.map((item, index) => (
                 <FAQItem
@@ -166,9 +178,11 @@ export default function HomePage({ lang, setLang, t }) {
           </div>
         </section>
 
-        <section id="assurance">
+        <section id="assurance" aria-labelledby="assurance-heading">
           <div className="section-inner">
-            <h2 className="section-title">{t("assurance.title")}</h2>
+            <h2 id="assurance-heading" className="section-title">
+              {t("assurance.title")}
+            </h2>
             <div className="credentials">
               <div className="credential-item">
                 <h3>{t("assurance.licenses.title")}</h3>
@@ -184,7 +198,6 @@ export default function HomePage({ lang, setLang, t }) {
                   <div className="badge">{t("badges.safety")}</div>
                 </div>
               </div>
-
               <div className="credential-item testimonial">
                 <p>{t("testimonial.quote")}</p>
                 <span>{t("testimonial.author")}</span>
@@ -193,20 +206,26 @@ export default function HomePage({ lang, setLang, t }) {
           </div>
         </section>
 
-        <section id="contact">
+        <section id="contact" aria-labelledby="contact-heading">
           <div className="section-inner">
-            <h2 className="section-title">{t("contact.title")}</h2>
+            <h2 id="contact-heading" className="section-title">
+              {t("contact.title")}
+            </h2>
             <div className="contact-offer-grid">
               <div className="contact-map-col">
-                <div className="contact-details">
+                <address className="contact-details">
                   <h3>Mathieu Courville</h3>
                   <div className="detail-label">{t("contact.label.title")}</div>
                   <div className="detail-line">{t("contact.role")}</div>
                   <div className="detail-label">{t("contact.label.phone")}</div>
-                  <div className="detail-line">438-888-9044</div>
+                  <div className="detail-line">
+                    <a href="tel:438-888-9044">438-888-9044</a>
+                  </div>
                   <div className="detail-label">{t("contact.label.email")}</div>
                   <div className="detail-line-email">
-                    maconnerie@grand-duc.ca
+                    <a href="mailto:maconnerie@grand-duc.ca">
+                      maconnerie@grand-duc.ca
+                    </a>
                   </div>
                   <div className="contact-actions">
                     <a className="btn-outline" href="tel:438-888-9044">
@@ -219,7 +238,7 @@ export default function HomePage({ lang, setLang, t }) {
                       {t("cta.email")}
                     </a>
                   </div>
-                </div>
+                </address>
                 <div className="map-embed">
                   <iframe
                     title="Maçonnerie Grand-Duc Location"

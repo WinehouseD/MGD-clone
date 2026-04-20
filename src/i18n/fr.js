@@ -8,6 +8,7 @@ const fr = {
   "nav.faq": "FAQ",
   "nav.assurance": "Certifications",
   "nav.contact": "Contact",
+  "hero.location": "Montréal · Laval · Longueuil · Rive-Sud",
   "hero.description":
     "Entreprise de maçonnerie de confiance, fièrement dirigée par Mathieu Courville.",
   "cta.call": "Appeler",

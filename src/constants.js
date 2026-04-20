@@ -1,11 +1,14 @@
 // import brickImg from "./assets/services/brick-installation.jpg";
-// import tuckpointingImg from "./assets/services/tuckpointing.jpg";
 // import sillLintelImg from "./assets/services/sill-lintel.jpg";
 // import bulgedWallImg from "./assets/services/bulged-wall.jpg";
 // import expansionJointImg from "./assets/services/expansion-joint.jpg";
 // import demolitionImg from "./assets/services/demolition.jpg";
 // import caulkingImg from "./assets/services/caulking.jpg";
 // import inspectionImg from "./assets/services/inspection.jpg";
+import card1Before from "./assets/before.jpeg";
+import card1After from "./assets/after.jpeg";
+import card2Before from "./assets/card2Before.jpg";
+import card2After from "./assets/card2After.jpg";
 
 export const serviceCards = [
   {
@@ -13,20 +16,22 @@ export const serviceCards = [
     slug: "brick-stone-installation",
     titleKey: "services.card1.title",
     descKey: "services.card1.desc",
-    image: "brickImg",
     imageAltKey: "services.card1.imageAlt",
     metaTitleKey: "services.card1.metaTitle",
     metaDescKey: "services.card1.metaDesc",
+    beforeImage: card1Before,
+    afterImage: card1After,
   },
   {
     key: "card2",
     slug: "tuckpointing-repointing",
     titleKey: "services.card2.title",
     descKey: "services.card2.desc",
-    image: "tuckpointingImg",
     imageAltKey: "services.card2.imageAlt",
     metaTitleKey: "services.card2.metaTitle",
     metaDescKey: "services.card2.metaDesc",
+    beforeImage: card2Before,
+    afterImage: card2After,
   },
   {
     key: "card3",

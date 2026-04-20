@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { serviceCards } from "../constants";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import BeforeAfterSlider from "../components/BeforeAfterSlider";
 
 function ServicePage({ lang, setLang, t }) {
   const { slug } = useParams();
@@ -150,14 +151,23 @@ function ServicePage({ lang, setLang, t }) {
               </div>
             </div>
             <div className="service-hero-image">
-              <img
-                src={service.image}
-                alt={t(service.imageAltKey)}
-                width={600}
-                height={400}
-                loading="eager"
-                decoding="async"
-              />
+              {service.beforeImage && service.afterImage ? (
+                <BeforeAfterSlider
+                  beforeSrc={service.beforeImage}
+                  afterSrc={service.afterImage}
+                  beforeAlt={t(service.beforeAltKey ?? service.imageAltKey)}
+                  afterAlt={t(service.afterAltKey ?? service.imageAltKey)}
+                />
+              ) : (
+                <img
+                  src={service.image}
+                  alt={t(service.imageAltKey)}
+                  width={600}
+                  height={400}
+                  loading="eager"
+                  decoding="async"
+                />
+              )}
             </div>
           </div>
         </section>
