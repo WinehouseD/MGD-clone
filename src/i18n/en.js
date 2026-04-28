@@ -213,7 +213,7 @@ const en = {
   "badges.safety": "Safe Worksites",
   "testimonial.quote":
     "Organized, punctual, and exceptionally professional. The result exceeded our expectations and showcases our property.",
-  "testimonial.author": "– Residential Client, Montréal",
+  "testimonial.author": "– Residential Client, Plateau-Mont-Royal, Montréal",
   "contact.title": "Contact",
   "contact.label.title": "Title",
   "contact.role": "Managing Director",

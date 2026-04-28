@@ -95,7 +95,10 @@ function BeforeAfterSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt }) {
         className="ba-img ba-after"
         src={afterSrc}
         alt={afterAlt}
+        width={600}
+        height={400}
         draggable={false}
+        decoding="async"
       />
 
       <div className="ba-before-wrap" style={{ width: `${sliderPos}%` }}>
@@ -104,6 +107,7 @@ function BeforeAfterSlider({ beforeSrc, afterSrc, beforeAlt, afterAlt }) {
           src={beforeSrc}
           alt={beforeAlt}
           draggable={false}
+          decoding="async"
           style={{ width: containerWidth || "100%" }}
         />
       </div>

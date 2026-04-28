@@ -227,7 +227,7 @@ const fr = {
   "badges.safety": "Chantiers sécuritaires",
   "testimonial.quote":
     "« Organisés, ponctuels et remarquablement professionnels. Le résultat dépasse nos attentes et met en valeur notre propriété. »",
-  "testimonial.author": "– Client résidentiel, Montréal",
+  "testimonial.author": "– Client résidentiel, Plateau-Mont-Royal, Montréal",
   "contact.title": "Contact",
   "contact.label.title": "Titre",
   "contact.role": "Directeur général",

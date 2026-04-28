@@ -55,6 +55,17 @@ function ServicePage({ lang, setLang, t }) {
       "@type": "Service",
       name: t(service.titleKey),
       description: t(service.descKey),
+
+      image: service.image
+        ? {
+            "@type": "ImageObject",
+            url: `${window.location.origin}${service.image}`,
+            width: 600,
+            height: 400,
+            description: t(service.imageAltKey),
+          }
+        : undefined,
+
       provider: {
         "@type": "LocalBusiness",
         name: "Maçonnerie Grand-Duc",

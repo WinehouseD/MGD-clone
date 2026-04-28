@@ -93,6 +93,8 @@ export default function HomePage({ lang, setLang, t }) {
                 src={icon}
                 alt="Maçonnerie Grand-Duc crest"
                 style={{ width: 300, objectFit: "cover" }}
+                loading="eager"
+                decoding="async"
               />
             </div>
           </div>

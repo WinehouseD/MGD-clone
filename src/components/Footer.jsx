@@ -1,5 +1,6 @@
 import icon from "../assets/logo.svg";
 import { languages } from "../constants";
+import { Link } from "react-router-dom";
 
 export default function Footer({ lang, setLang, t }) {
   const currentYear = new Date().getFullYear();
@@ -10,7 +11,12 @@ export default function Footer({ lang, setLang, t }) {
         <div className="footer-brand">
           <img
             src={icon}
+            width={40}
+            height={50}
             alt="Maçonnerie Grand-Duc logo"
+            loading="lazy"
+            decoding="async"
+            role="img"
             style={{ objectFit: "cover" }}
           />
           <div>
@@ -23,7 +29,17 @@ export default function Footer({ lang, setLang, t }) {
           <div>
             © {currentYear} Maçonnerie Grand-Duc. {t("footer.rights")}
           </div>
-
+          <div className="footer-legal-links">
+            <Link to="/privacy">
+              {lang === "fr"
+                ? "Politique de confidentialité"
+                : "Privacy Policy"}
+            </Link>
+            <span aria-hidden="true">·</span>
+            <Link to="/terms">
+              {lang === "fr" ? "Conditions d'utilisation" : "Terms of Service"}
+            </Link>
+          </div>
           <div className="language-toggle">
             {languages.map(({ code, label }) => (
               <button

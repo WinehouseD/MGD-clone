@@ -25,6 +25,8 @@ export default function Header({ t }) {
             alt="Maçonnerie Grand-Duc logo"
             width={40}
             height={50}
+            role="img"
+            decoding="async"
             style={{ objectFit: "cover" }}
           />
           Maçonnerie Grand-Duc
